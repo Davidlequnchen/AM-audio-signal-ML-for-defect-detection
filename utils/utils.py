@@ -34,7 +34,7 @@ colour = ["#e9150d", '#999999', 'c', 'Brown', "#fbab17",'#333333', "#0515bf", "#
 def simple_visualization(sound, sr=44100, alpha = 1):
     fig, axs = plt.subplots(1, 1, tight_layout = True, figsize=(10, 5)) #constrained_layout=True,
 
-    librosa.display.waveplot(sound, sr=sr, alpha=alpha, label = 'original signal')
+    librosa.display.waveshow(sound, sr=sr, alpha=alpha, label = 'original signal')
     axs.set_xlabel('Time', fontsize = 18)
     axs.set_ylabel('Amplitute', fontsize = 18)
 
@@ -44,8 +44,8 @@ def simple_visualization(sound, sr=44100, alpha = 1):
 def equalized_signal_visualization(noisy, cleaned, sr=44100, alpha = 1):
     fig, axs = plt.subplots(1, 1, tight_layout = True, figsize=(10, 5)) #constrained_layout=True,
 
-    librosa.display.waveplot(noisy, sr=sr, alpha=alpha, label = 'original signal')
-    librosa.display.waveplot(cleaned,sr=sr, alpha=0.5, label = 'eqaulized signal')
+    librosa.display.waveshow(noisy, sr=sr, alpha=alpha, label = 'original signal')
+    librosa.display.waveshow(cleaned,sr=sr, alpha=0.5, label = 'eqaulized signal')
     axs.set_xlabel('Time', fontsize = 16)
     axs.set_ylabel('Normalized Amplitute', fontsize = 16)
 
@@ -55,8 +55,8 @@ def equalized_signal_visualization(noisy, cleaned, sr=44100, alpha = 1):
 def bandpass_signal_visualization(equalized, cleaned, sr=44100, alpha = 1):
     fig, axs = plt.subplots(1, 1, tight_layout = True, figsize=(10, 5)) #constrained_layout=True,
 
-    librosa.display.waveplot(equalized, sr=sr, alpha=alpha, label = 'equalized')
-    librosa.display.waveplot(cleaned,sr=sr, alpha=0.5, label = 'bandpass filtered')
+    librosa.display.waveshow(equalized, sr=sr, alpha=alpha, label = 'equalized')
+    librosa.display.waveshow(cleaned,sr=sr, alpha=0.5, label = 'bandpass filtered')
     axs.set_xlabel('Time', fontsize = 16)
     axs.set_ylabel('Normalized Amplitute', fontsize = 16)
 
@@ -67,8 +67,8 @@ def bandpass_signal_visualization(equalized, cleaned, sr=44100, alpha = 1):
 def final_signal_visualization(filtered, final, sr=44100, alpha = 1):
     fig, axs = plt.subplots(1, 1, tight_layout = True, figsize=(10, 5)) #constrained_layout=True,
 
-    librosa.display.waveplot(filtered, sr=sr, alpha=alpha, label = 'bandpass filtered signal')
-    librosa.display.waveplot(final,sr=sr, alpha=0.5, label = 'final extracted signal')
+    librosa.display.waveshow(filtered, sr=sr, alpha=alpha, label = 'bandpass filtered signal')
+    librosa.display.waveshow(final,sr=sr, alpha=0.5, label = 'final extracted signal')
     axs.set_xlabel('Time', fontsize = 16)
     axs.set_ylabel('Normalized Amplitute', fontsize = 16)
 
@@ -78,9 +78,9 @@ def final_signal_visualization(filtered, final, sr=44100, alpha = 1):
 def two_step_cleaned_signal_visualization(original, equalized, cleaned, sr=44100, alpha = 1):
     fig, axs = plt.subplots(1, 1, tight_layout = True, figsize=(10, 5)) #constrained_layout=True,
     
-    librosa.display.waveplot(original, sr=sr, alpha=alpha, label = 'original signal')
-    librosa.display.waveplot(equalized, sr=sr, alpha=1, label = 'after applying equalizer')
-    librosa.display.waveplot(cleaned,sr=sr, alpha=0.6, label = 'denoised signal w equalizer and bandpass filter')
+    librosa.display.waveshow(original, sr=sr, alpha=alpha, label = 'original signal')
+    librosa.display.waveshow(equalized, sr=sr, alpha=1, label = 'after applying equalizer')
+    librosa.display.waveshow(cleaned,sr=sr, alpha=0.6, label = 'denoised signal w equalizer and bandpass filter')
     axs.set_xlabel('Time', fontsize = 16)
     axs.set_ylabel('Normalized Amplitute', fontsize = 16)
 
@@ -90,10 +90,10 @@ def two_step_cleaned_signal_visualization(original, equalized, cleaned, sr=44100
 def three_step_cleaned_signal_visualization(original, equalized, bandpassed, final_cleaned, sr=44100):
     fig, axs = plt.subplots(1, 1, tight_layout = True, figsize=(10, 5)) #constrained_layout=True,
     
-    librosa.display.waveplot(original, sr=sr, alpha=1, label = 'original signal')
-    librosa.display.waveplot(equalized, sr=sr, alpha=0.85, label = 'after equalization')
-    librosa.display.waveplot(bandpassed,sr=sr, alpha=0.7, label = 'after bandpass filter')
-    librosa.display.waveplot(final_cleaned,sr=sr, alpha=0.5, label = 'final extracted audio')
+    librosa.display.waveshow(original, sr=sr, alpha=1, label = 'original signal')
+    librosa.display.waveshow(equalized, sr=sr, alpha=0.85, label = 'after equalization')
+    librosa.display.waveshow(bandpassed,sr=sr, alpha=0.7, label = 'after bandpass filter')
+    librosa.display.waveshow(final_cleaned,sr=sr, alpha=0.5, label = 'final extracted audio')
     axs.set_xlabel('Time', fontsize = 16)
     axs.set_ylabel('Normalized Amplitute', fontsize = 16)
     axs.legend(loc = 3)
@@ -108,10 +108,10 @@ def three_step_cleaned_signal_visualization_smooth(original, equalized, bandpass
     final_cleaned = pd.Series(final_cleaned).rolling(window=N).mean().iloc[N-1:].values
     
     
-    librosa.display.waveplot(original, sr=sr, alpha=1, label = 'original signal')
-    librosa.display.waveplot(equalized, sr=sr, alpha=0.85, label = 'after equalization')
-    librosa.display.waveplot(bandpassed,sr=sr, alpha=0.7, label = 'after bandpass filter')
-    librosa.display.waveplot(final_cleaned,sr=sr, alpha=0.5, label = 'final extracted audio')
+    librosa.display.waveshow(original, sr=sr, alpha=1, label = 'original signal')
+    librosa.display.waveshow(equalized, sr=sr, alpha=0.85, label = 'after equalization')
+    librosa.display.waveshow(bandpassed,sr=sr, alpha=0.7, label = 'after bandpass filter')
+    librosa.display.waveshow(final_cleaned,sr=sr, alpha=0.5, label = 'final extracted audio')
     axs.set_xlabel('Time', fontsize = 16)
     axs.set_ylabel('Normalized Amplitute', fontsize = 16)
     axs.legend(loc = 3)
@@ -454,8 +454,8 @@ def denoised_original_signal_visualization(sample_original_list,sample_cleaned_l
     fig, axs = plt.subplots(2, 2, tight_layout = True, figsize=(12, 10)) #constrained_layout=True,
 
     axs[0,0] = plt.subplot(2, 2, 1)
-    librosa.display.waveplot(sample_original_list[0], sr=sampling_rate, alpha=1, label = 'original signal')
-    librosa.display.waveplot(sample_cleaned_list[0], sr=sampling_rate, alpha=0.6,label = 'denoised signal')
+    librosa.display.waveshow(sample_original_list[0], sr=sampling_rate, alpha=1, label = 'original signal')
+    librosa.display.waveshow(sample_cleaned_list[0], sr=sampling_rate, alpha=0.6,label = 'denoised signal')
     axs[0,0].set_title('Experiment 1', fontsize = 16, pad=10 )
     axs[0,0].set_xlabel('Time')
     axs[0,0].set_ylabel('Amplitute')
@@ -464,8 +464,8 @@ def denoised_original_signal_visualization(sample_original_list,sample_cleaned_l
     fig.suptitle("Time-domain visualisation of raw and denoised signal", fontsize = 20,  y=1.0005)
 
     axs[0,1] = plt.subplot(2, 2, 2)
-    librosa.display.waveplot(sample_original_list[1], sr=sampling_rate, alpha=1, label = 'original signal')
-    librosa.display.waveplot(sample_cleaned_list[1], sr=sampling_rate, alpha=0.6,label = 'denoised signal')
+    librosa.display.waveshow(sample_original_list[1], sr=sampling_rate, alpha=1, label = 'original signal')
+    librosa.display.waveshow(sample_cleaned_list[1], sr=sampling_rate, alpha=0.6,label = 'denoised signal')
     axs[0,1].set_title('Experiment 2',  fontsize = 16, pad=10)
     axs[0,1].set_xlabel('Time')
     axs[0,1].set_ylabel('Amplitute')
@@ -473,8 +473,8 @@ def denoised_original_signal_visualization(sample_original_list,sample_cleaned_l
     # axs[0,1].set_ylim((-0.45, 0.45))
 
     axs[1,0] = plt.subplot(2, 2, 3)
-    librosa.display.waveplot(sample_original_list[2], sr=sampling_rate, alpha=1, label = 'original signal')
-    librosa.display.waveplot(sample_cleaned_list[2], sr=sampling_rate, alpha=0.6,label = 'denoised signal')
+    librosa.display.waveshow(sample_original_list[2], sr=sampling_rate, alpha=1, label = 'original signal')
+    librosa.display.waveshow(sample_cleaned_list[2], sr=sampling_rate, alpha=0.6,label = 'denoised signal')
     axs[1,0].set_title('Experiment 3',  fontsize = 16, pad=10)
     axs[1,0].set_xlabel('Time')
     axs[1,0].set_ylabel('Amplitute')
@@ -482,8 +482,8 @@ def denoised_original_signal_visualization(sample_original_list,sample_cleaned_l
     # axs[1,0].set_ylim((-0.45, 0.45))
 
     axs[1,1] = plt.subplot(2, 2, 4)
-    librosa.display.waveplot(sample_original_list[3], sr=sampling_rate, alpha=1, label = 'original signal')
-    librosa.display.waveplot(sample_cleaned_list[3], sr=sampling_rate, alpha=0.6,label = 'denoised signal')
+    librosa.display.waveshow(sample_original_list[3], sr=sampling_rate, alpha=1, label = 'original signal')
+    librosa.display.waveshow(sample_cleaned_list[3], sr=sampling_rate, alpha=0.6,label = 'denoised signal')
     axs[1,1].set_title('Experiment 4',  fontsize = 16, pad=10)
     axs[1,1].set_xlabel('Time')
     axs[1,1].set_ylabel('Amplitute')

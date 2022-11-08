@@ -165,8 +165,8 @@ def fft_signal_visualization_smooth(signal_list, name_list, f_ratio=0.5, log_x=F
 def equalized_signal_visualization(noisy, cleaned, sr=44100, alpha = 1):
     fig, axs = plt.subplots(1, 1, tight_layout = True, figsize=(8, 4)) #constrained_layout=True,
 
-    librosa.display.waveplot(noisy, sr=sr, alpha=alpha, label = 'original signal')
-    librosa.display.waveplot(cleaned,sr=sr, alpha=0.6, label = 'eqaulized signal')
+    librosa.display.waveshow(noisy, sr=sr, alpha=alpha, label = 'original signal')
+    librosa.display.waveshow(cleaned,sr=sr, alpha=0.6, label = 'eqaulized signal')
     axs.set_xlabel('Time', fontsize = 16)
     axs.set_ylabel('Normalized Amplitute', fontsize = 16)
     
@@ -180,8 +180,8 @@ def equalized_signal_visualization(noisy, cleaned, sr=44100, alpha = 1):
 def final_signal_visualization(filtered, final, sr=44100, alpha = 1):
     fig, axs = plt.subplots(1, 1, tight_layout = True, figsize=(8, 4)) #constrained_layout=True,
 
-    librosa.display.waveplot(filtered, sr=sr, alpha=alpha, label = 'raw signal')
-    librosa.display.waveplot(final,sr=sr, alpha=0.5, label = 'clean signal')
+    librosa.display.waveshow(filtered, sr=sr, alpha=alpha, label = 'raw signal')
+    librosa.display.waveshow(final,sr=sr, alpha=0.5, label = 'clean signal')
     axs.set_xlabel('Time', fontsize = 16)
     axs.set_ylabel('Normalized Amplitute', fontsize = 16)
 
@@ -200,8 +200,8 @@ def final_signal_visualization_smooth(original, final_cleaned, sr=44100, alpha =
     final_cleaned = pd.Series(final_cleaned).rolling(window=N).mean().iloc[N-1:].values
     
     
-    librosa.display.waveplot(original, sr=sr, alpha=alpha, label = 'raw signal')
-    librosa.display.waveplot(final_cleaned,sr=sr, alpha=0.9, label = 'denoised signal')
+    librosa.display.waveshow(original, sr=sr, alpha=alpha, label = 'raw signal')
+    librosa.display.waveshow(final_cleaned,sr=sr, alpha=0.9, label = 'denoised signal')
     axs.set_xlabel('Time', fontsize = 16)
     axs.set_ylabel('Normalized Amplitute', fontsize = 16)
     # axs.set_ylim([-1, 1])
@@ -283,10 +283,10 @@ def three_step_cleaned_signal_visualization_smooth(original, equalized, bandpass
     final_cleaned = pd.Series(final_cleaned).rolling(window=N).mean().iloc[N-1:].values
     
     
-    librosa.display.waveplot(original, sr=sr, alpha=1, label = 'raw signal')
-    librosa.display.waveplot(equalized, sr=sr, alpha=0.85, label = 'after equalization (step 1)')
-    librosa.display.waveplot(bandpassed,sr=sr, alpha=0.7, label = 'after bandpass filter (step 2)')
-    librosa.display.waveplot(final_cleaned,sr=sr, alpha=0.5, label = 'final clean audio (step 3)')
+    librosa.display.waveshow(original, sr=sr, alpha=1, label = 'raw signal')
+    librosa.display.waveshow(equalized, sr=sr, alpha=0.85, label = 'after equalization (step 1)')
+    librosa.display.waveshow(bandpassed,sr=sr, alpha=0.7, label = 'after bandpass filter (step 2)')
+    librosa.display.waveshow(final_cleaned,sr=sr, alpha=0.5, label = 'final clean audio (step 3)')
     axs.set_xlabel('Time', fontsize = 16)
     axs.set_ylabel('Normalized Amplitute', fontsize = 16)
     font = font_manager.FontProperties(family='sans-serif',
@@ -304,10 +304,10 @@ def category_visualization_smooth(signal_1, signal_2, signal_3, signal_4, sr=441
     signal_4 = pd.Series(signal_4).rolling(window=N).mean().iloc[N-1:].values
     
     
-    librosa.display.waveplot(signal_4, sr=sr, alpha=1, label = 'Extremely low efficiency')
-    librosa.display.waveplot(signal_1, sr=sr, alpha=0.8, label = 'Low efficiency')
-    librosa.display.waveplot(signal_2,sr=sr, alpha=0.8, label = 'Medium efficiency')
-    librosa.display.waveplot(signal_3,sr=sr, alpha=0.7, label = 'High efficiency')
+    librosa.display.waveshow(signal_4, sr=sr, alpha=1, label = 'Extremely low efficiency')
+    librosa.display.waveshow(signal_1, sr=sr, alpha=0.8, label = 'Low efficiency')
+    librosa.display.waveshow(signal_2,sr=sr, alpha=0.8, label = 'Medium efficiency')
+    librosa.display.waveshow(signal_3,sr=sr, alpha=0.7, label = 'High efficiency')
     axs.set_xlabel('Time', fontsize = 16)
     axs.set_ylabel('Normalized Amplitute', fontsize = 16)
     font = font_manager.FontProperties(family='sans-serif',
