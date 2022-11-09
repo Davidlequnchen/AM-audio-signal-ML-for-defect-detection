@@ -81,7 +81,7 @@ def visualize_rms_smooth(signal_list, frame_size, hop_length, sampling_rate, N_s
     plt.figure(figsize=(10, 5))
     for i in range(len(signal_list)):
         signal_data = signal_list[i]
-        rms= librosa.feature.rms(signal_data, frame_length=frame_size, hop_length=hop_length)[0]
+        rms= librosa.feature.rms(y=signal_data, frame_length=frame_size, hop_length=hop_length)[0]
         rms_smooth = pd.Series(rms).rolling(window=N_smooth).mean().iloc[N_smooth-1:].values
    
         ## visualisation
@@ -175,7 +175,7 @@ def spectral_flatness(signal_list, frame_size, hop_length, sampling_rate = 44100
         # else:
         #     S_power = S
         
-        spectral_flatness = librosa.feature.spectral_flatness(signal_data, power=power, n_fft=frame_size, hop_length=hop_length)[0]
+        spectral_flatness = librosa.feature.spectral_flatness(y=signal_data, power=power, n_fft=frame_size, hop_length=hop_length)[0]
         spectral_flatness_smooth = pd.Series(spectral_flatness).rolling(window=N_smooth).mean().iloc[N_smooth-1:].values
         t = librosa.frames_to_time(range(len(spectral_flatness_smooth)), hop_length=hop_length, sr = sampling_rate)
         plt.plot(t, spectral_flatness_smooth, label="Experiment "+ str(i+1), alpha = 1)
@@ -219,7 +219,7 @@ def band_energy_ratio_plot(signal_list, frame_size, hop_length, sampling_rate = 
     for i in range(len(signal_list)):
         signal_data = signal_list[i]
     
-        Stft = librosa.stft(signal_data, n_fft=frame_size, hop_length=hop_length)
+        Stft = librosa.stft(y=signal_data, n_fft=frame_size, hop_length=hop_length)
         ber = band_energy_ratio(Stft, split_frequency = split_frequency, sample_rate = sampling_rate)
         ber_smooth = pd.Series(ber).rolling(window=N_smooth).mean().iloc[N_smooth-1:].values
         t = librosa.frames_to_time(range(len(ber_smooth)), hop_length=hop_length, sr = sampling_rate)
@@ -236,7 +236,7 @@ def zero_crossing_rate_plot(signal_list, frame_size, hop_length, sampling_rate =
     for i in range(len(signal_list)):
         signal_data = signal_list[i]
 
-        zcr= librosa.feature.zero_crossing_rate(signal_data, frame_length=frame_size, hop_length=hop_length)[0]
+        zcr= librosa.feature.zero_crossing_rate(y=signal_data, frame_length=frame_size, hop_length=hop_length)[0]
         zcr_smooth = pd.Series(zcr).rolling(window=N_smooth).mean().iloc[N_smooth-1:].values
         ## visualisation
         t = librosa.frames_to_time(range(len(zcr_smooth)), hop_length=hop_length, sr = sampling_rate)
@@ -354,7 +354,7 @@ def plot_spectral_kurtosis(signal_list, frame_size, hop_length, sampling_rate = 
     
     for i in range(len(signal_list)):
         signal_data = signal_list[i]    
-        S, phase = librosa.magphase(librosa.stft(signal_data))
+        S, phase = librosa.magphase(librosa.stft(y=signal_data))
         # S_power = S **2   
         S_power = S
         sk = spectral_kurtosis(S_power)
