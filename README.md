@@ -41,7 +41,7 @@ If you use this repository in your research, please cite our work as follows:
 
 ```
 @article{chen2023insitu,
-  author    = {Chen, Lequn and Yao, Xinhai and Tan, Chee and He, Wei and Su, Jingwei and Weng, Feng and Chew, Yi and Ng, Nicholas P.H. and Moon, Seung Ki},
+  author    = {Chen, Lequn and Yao, Xiling and Tan, Chaolin and He, Weiyang and Su, Jinglong and Weng, Fei and Chew, Youxiang, Yi and Moon, Seung Ki},
   title     = {In-situ crack and keyhole pore detection in laser directed energy deposition through acoustic signal and deep learning},
   journal   = {Additive Manufacturing},
   volume    = {72},
